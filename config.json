@@ -2,9 +2,10 @@
     "display": {
         "height": 600,
         "width": 800,
-        "caption": "Outsiders Extra Credit: Snakes and Ladders"
+        "caption": "Outsiders Extra Credit: Snakes and Ladders",
+        "fps": 60
     },
     "questions": [
-        
+
     ]
 }
