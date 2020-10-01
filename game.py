@@ -1,6 +1,7 @@
 import pygame
 import json
 import time
+import random
 
 with open('config.json') as configuration: #Read JSON from config.json
     config = json.loads(configuration.read())
@@ -19,6 +20,7 @@ grid = pygame.image.load("./assets/grid.png")
 
 #Variables
 clock = pygame.time.Clock()
+font = pygame.font.SysFont(None, 25)
 
 def centercoord(imageh, imagew):
     centerscreencoord_height = config["display"]["height"]
@@ -45,15 +47,110 @@ def start():
         pygame.display.flip()
 
 def mainscreen():
+    answer = ""
     loop = True
     while(loop == True):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 loop = False
                 print("Game Quit")
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_BACKSPACE:
+                    answer = answer[:-1]
+                elif event.key == pygame.K_RETURN:
+                    answer = ""
+                else:
+                    letter = str(keystroke_recorder(event))
+                    answer = answer + str(keystroke_recorder(event)) #Adding Letters
+        #Text Update
+        answer_text = font.render("Your Answer: " + answer, True, (0,0,0), (255, 255, 255))
         gameDisplay.blit(grid, [0,0]) #Set Background
+        gameDisplay.blit(answer_text, [(config["display"]["width"]/2)-200, config["display"]["height"]-20])
         pygame.display.update()
         clock.tick(config["display"]["fps"])
         pygame.display.flip()
+
+def keystroke_recorder(event):
+    if event.type == pygame.KEYDOWN:
+        #Alpha Keys
+        if event.key == pygame.K_q:
+            return "q"
+        elif event.key == pygame.K_w:
+            return "w"
+        elif event.key == pygame.K_e:
+            return "e"
+        elif event.key == pygame.K_r:
+            return "r"
+        elif event.key == pygame.K_t:
+            return "t"
+        elif event.key == pygame.K_y:
+            return "y"
+        elif event.key == pygame.K_u:
+            return "u"
+        elif event.key == pygame.K_i:
+            return "i"
+        elif event.key == pygame.K_o:
+            return "o"
+        elif event.key == pygame.K_p:
+            return "p"
+        elif event.key == pygame.K_a:
+            return "a"
+        elif event.key == pygame.K_s:
+            return "s"
+        elif event.key == pygame.K_d:
+            return "d"
+        elif event.key == pygame.K_f:
+            return "f"
+        elif event.key == pygame.K_g:
+            return "g"
+        elif event.key == pygame.K_h:
+            return "h"
+        elif event.key == pygame.K_j:
+            return "j"
+        elif event.key == pygame.K_k:
+            return "k"
+        elif event.key == pygame.K_l:
+            return "l"
+        elif event.key == pygame.K_z:
+            return "z"
+        elif event.key == pygame.K_x:
+            return "x"
+        elif event.key == pygame.K_c:
+            return "c"
+        elif event.key == pygame.K_v:
+            return "v"
+        elif event.key == pygame.K_b:
+            return "b"
+        elif event.key == pygame.K_n:
+            return "n"
+        elif event.key == pygame.K_m:
+            return "m"
+        #Number Keys
+        elif event.key == pygame.K_1:
+            return "1"
+        elif event.key == pygame.K_2:
+            return "2"
+        elif event.key == pygame.K_3:
+            return "3"
+        elif event.key == pygame.K_4:
+            return "4"
+        elif event.key == pygame.K_5:
+            return "5"
+        elif event.key == pygame.K_6:
+            return "6"
+        elif event.key == pygame.K_7:
+            return "7"
+        elif event.key == pygame.K_8:
+            return "8"
+        elif event.key == pygame.K_9:
+            return "9"
+        elif event.key == pygame.K_0:
+            return "0"
+        #Space
+        elif event.key == pygame.K_SPACE:
+            return " "
+        else:
+            return ""
+
 
 start()
