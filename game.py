@@ -19,6 +19,9 @@ startingbg = pygame.image.load("./assets/startingbg.png")
 startbtn = pygame.image.load("./assets/startbtn.png")
 grid = pygame.image.load("./assets/grid.png")
 snake = pygame.image.load("./assets/snake.png")
+banner = pygame.image.load("./assets/announcement.png")
+
+dice = [pygame.image.load("./assets/dice/1.png"), pygame.image.load("./assets/dice/2.png"), pygame.image.load("./assets/dice/3.png"), pygame.image.load("./assets/dice/4.png"), pygame.image.load("./assets/dice/5.png"), pygame.image.load("./assets/dice/6.png")]
 
 #Variables
 clock = pygame.time.Clock()
@@ -67,13 +70,23 @@ def start():
         clock.tick(config["display"]["fps"])
         pygame.display.flip()
 
+async def wait(seconds):
+    time.sleep(seconds)
+
 def mainscreen():
+
+    #Private Variables
+
     start_time = datetime.datetime.now()
     #Load Variables
-    answer = ""
-    loop = True
+    answer = "" 
+    provided_answer = ""
     offset = [config["snake-xoffset"], 0]
     position = [0,0]
+    loop = True
+    diceface = dice[0]
+    displaycube = False
+    bannerdisplay = False
     while(loop == True):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -83,14 +96,18 @@ def mainscreen():
                 if event.key == pygame.K_BACKSPACE:
                     answer = answer[:-1]
                 elif event.key == pygame.K_RETURN:
+                    provided_answer = answer
                     answer = ""
+                    bannerdisplay = True
                 #Arrow Keystrokes
                 elif event.key == pygame.K_RIGHT:
+                    displaycube = True
                     randomnumber = random.randint(1,6)
+                    diceface = dice[randomnumber-1]
                     print("Random Number: " + str(randomnumber))
                     for x in range(randomnumber):
                         offset = move(offset)
-                        position = offset_to_pos(offset)  
+                        position = offset_to_pos(offset)
                 else:
                     letter = str(keystroke_recorder(event))
                     answer = answer + str(keystroke_recorder(event)) #Adding Letters
@@ -109,6 +126,14 @@ def mainscreen():
         gameDisplay.blit(time_text, [0, config["display"]["height"]-20])
         #Snake
         gameDisplay.blit(snake, offset)
+        #Dice
+        if displaycube == True:
+            gameDisplay.blit(diceface, [0, 60])
+        #Announcments
+        if bannerdisplay == True:
+            provided_answer_text = font.render("Your Answer: " + provided_answer, True, (0,0,0))
+            gameDisplay.blit(banner, centercoord(341, 604))
+            gameDisplay.blit(provided_answer_text, [int(config["display"]["width"]/2-180), int(config["display"]["height"]/2-75)])
         pygame.display.update()
         clock.tick(config["display"]["fps"])
         pygame.display.flip()
