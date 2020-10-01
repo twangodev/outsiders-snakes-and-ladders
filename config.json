@@ -1,33 +1,37 @@
 {
+    "snake-xoffset": 110,
     "display": {
         "height": 600,
         "width": 800,
         "caption": "Outsiders Extra Credit: Snakes and Ladders",
         "fps": 60
-    }, 
-    #questions 
-
+    },
     "questions": { 
-
-        "What is one of Ponyboy's sibling's names? ": ["Soda", "Sodapop", "Darry"], 
-        "What is Dallas's nickname?": "Dally",
-    
-        "What is the first name of ONE of the girls at the movies?" : ["Cherry" , "Marcia"],
-        "What is the name of one of the people who wait in line for popcorn at the movies?" : [["Cherry", "Cherry Valance"],["Ponyboy", "Pony"]],
-        
-        "What is the name of Sodapop's old horse?" : ["Mickey Mouse", "Mickey"],
-        "What is the name of one of the boys who pull in to pick up Cherry and Marcia?" : ["Bob", "Bobbi", "Randy"],
-
-        "What weapon does Johnny use to kill Bob?" : ["Blade", "Switchblade", "Knife"],
-        "Where did Bob drown Ponyboy in?" : ["Fountain", "Park"],
-
-        "What book does Johnny bring back when Ponyboy and him are at the church?" : "Gone with the Wind",
-        "Where did Ponyboy eat before the church started to burn?": ["DQ","Dairy Queen"],
-
-        "When going through the burning church, what article of clothing saved Ponyboy's life?" : ["Dallas' Jacket", "Dallas's Jacket", "Dally's Jacket", "Jacket", "Coat"],
-        "Who is stuck inside the burning chruch?" : ["children","kids","schoolchildren"],
-
+        "01": "What is one of Ponyboy's sibling's names?",
+        "02": "What is Dallas's nickname?",
+        "03": "What is the first name of ONE of the girls at the movies?",
+        "04": "What is the name of one of the people who wait in line for popcorn at the movies?",
+        "05": "What is the name of Sodapop's old horse?",
+        "06": "What is the name of one of the boys who pull in to pick up Cherry and Marcia?",
+        "07": "What weapon does Johnny use to kill Bob?",
+        "08": "Where did Bob drown Ponyboy in?",
+        "09": "What book does Johnny bring back when Ponyboy and him are at the church?",
+        "10": "Where did Ponyboy eat before the church started to burn?",
+        "11": "When going through the burning church, what article of clothing saved Ponyboy's life?",
+        "12": "Who is stuck inside the burning chruch?"
+    },
+    "answers": {
+        "01": ["Soda", "Sodapop", "Darry"],
+        "02": "Dally",
+        "03": ["Cherry", "Maria"],
+        "04": ["Cherry", "Cherry Valance", "Ponyboy", "Pony"],
+        "05": ["Mickey Mouse", "Mickey"],
+        "06": ["Bob", "Bobbi", "Randy"],
+        "07": ["Blade", "Switchblade", "Knife"],
+        "08": ["Fountain", "Park"],
+        "09": "Gone with the Wind",
+        "10": ["DQ","Dairy Queen"],
+        "11": ["Dallas' Jacket", "Dallas's Jacket", "Dally's Jacket", "Jacket", "Coat"],
+        "12": ["Children", "Kids", "Schoolchildren"]
     }
-
-    
 }

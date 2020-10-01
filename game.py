@@ -17,6 +17,7 @@ pygame.display.set_caption(config["display"]["caption"])
 startingbg = pygame.image.load("./assets/startingbg.png")
 startbtn = pygame.image.load("./assets/startbtn.png")
 grid = pygame.image.load("./assets/grid.png")
+snake = pygame.image.load("./assets/snake.png")
 
 #Variables
 clock = pygame.time.Clock()
@@ -28,6 +29,25 @@ def centercoord(imageh, imagew):
     x = (centerscreencoord_width/2)-(imagew/2)
     y = (centerscreencoord_height/2)-(imageh/2)
     return [int(x),int(y)]
+
+def move(offset):
+    x, y = offset
+    x += 60
+    if x > 650:
+        x = config["snake-xoffset"]
+        if y != 540:
+            y += 60
+        else:
+            print("You win")
+    return [x, y]
+
+def offset_to_pos(offset):
+    x, y = offset
+    x -= config["snake-xoffset"]
+    pos_x = x/60
+    pos_y = y/60
+    return [pos_x, pos_y]
+#Main Modules
 
 def start():
     loop = True
@@ -47,8 +67,11 @@ def start():
         pygame.display.flip()
 
 def mainscreen():
+    #Load Variables
     answer = ""
     loop = True
+    offset = [config["snake-xoffset"], 0]
+    position = [0,0]
     while(loop == True):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -59,13 +82,24 @@ def mainscreen():
                     answer = answer[:-1]
                 elif event.key == pygame.K_RETURN:
                     answer = ""
+                #Arrow Keystrokes
+                elif event.key == pygame.K_RIGHT:
+                    offset = move(offset)
+                    position = offset_to_pos(offset)
                 else:
                     letter = str(keystroke_recorder(event))
                     answer = answer + str(keystroke_recorder(event)) #Adding Letters
-        #Text Update
-        answer_text = font.render("Your Answer: " + answer, True, (0,0,0), (255, 255, 255))
+        #Display
         gameDisplay.blit(grid, [0,0]) #Set Background
+        #Answer Text Update
+        answer_text = font.render("Your Answer: " + answer, True, (0,0,0), (255, 255, 255)) #Answer
         gameDisplay.blit(answer_text, [(config["display"]["width"]/2)-200, config["display"]["height"]-20])
+        #Score Update
+        score = str(position[0] + (position[1]*10) + 1)
+        score_text = font.render("Score: " + score, True, (0,0,0), (255,255,255))
+        gameDisplay.blit(score_text, [0,0])
+        #Snake
+        gameDisplay.blit(snake, offset)
         pygame.display.update()
         clock.tick(config["display"]["fps"])
         pygame.display.flip()
@@ -151,6 +185,5 @@ def keystroke_recorder(event):
             return " "
         else:
             return ""
-
 
 start()
