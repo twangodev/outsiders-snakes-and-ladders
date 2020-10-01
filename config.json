@@ -4,8 +4,30 @@
         "width": 800,
         "caption": "Outsiders Extra Credit: Snakes and Ladders",
         "fps": 60
-    },
-    "questions": {""}
+    }, 
+    #questions 
+
+    "questions": { 
+
+        "What is one of Ponyboy's sibling's names? ": ["Soda", "Sodapop", "Darry"], 
+        "What is Dallas's nickname?": "Dally",
+    
+        "What is the first name of ONE of the girls at the movies?" : ["Cherry" , "Marcia"],
+        "What is the name of one of the people who wait in line for popcorn at the movies?" : [["Cherry", "Cherry Valance"],["Ponyboy", "Pony"]],
+        
+        "What is the name of Sodapop's old horse?" : ["Mickey Mouse", "Mickey"],
+        "What is the name of one of the boys who pull in to pick up Cherry and Marcia?" : ["Bob", "Bobbi", "Randy"],
+
+        "What weapon does Johnny use to kill Bob?" : ["Blade", "Switchblade", "Knife"],
+        "Where did Bob drown Ponyboy in?" : ["Fountain", "Park"],
+
+        "What book does Johnny bring back when Ponyboy and him are at the church?" : "Gone with the Wind",
+        "Where did Ponyboy eat before the church started to burn?": ["DQ","Dairy Queen"],
+
+        "When going through the burning church, what article of clothing saved Ponyboy's life?" : ["Dallas' Jacket", "Dallas's Jacket", "Dally's Jacket", "Jacket", "Coat"],
+        "Who is stuck inside the burning chruch?" : ["children","kids","schoolchildren"],
+
+    }
 
     
 }
