@@ -2,6 +2,7 @@ import pygame
 import json
 import time
 import random
+import datetime
 
 with open('config.json') as configuration: #Read JSON from config.json
     config = json.loads(configuration.read())
@@ -46,7 +47,7 @@ def offset_to_pos(offset):
     x -= config["snake-xoffset"]
     pos_x = x/60
     pos_y = y/60
-    return [pos_x, pos_y]
+    return [int(pos_x), int(pos_y)]
 #Main Modules
 
 def start():
@@ -67,6 +68,7 @@ def start():
         pygame.display.flip()
 
 def mainscreen():
+    start_time = datetime.datetime.now()
     #Load Variables
     answer = ""
     loop = True
@@ -84,8 +86,11 @@ def mainscreen():
                     answer = ""
                 #Arrow Keystrokes
                 elif event.key == pygame.K_RIGHT:
-                    offset = move(offset)
-                    position = offset_to_pos(offset)
+                    randomnumber = random.randint(1,6)
+                    print("Random Number: " + str(randomnumber))
+                    for x in range(randomnumber):
+                        offset = move(offset)
+                        position = offset_to_pos(offset)  
                 else:
                     letter = str(keystroke_recorder(event))
                     answer = answer + str(keystroke_recorder(event)) #Adding Letters
@@ -93,11 +98,15 @@ def mainscreen():
         gameDisplay.blit(grid, [0,0]) #Set Background
         #Answer Text Update
         answer_text = font.render("Your Answer: " + answer, True, (0,0,0), (255, 255, 255)) #Answer
-        gameDisplay.blit(answer_text, [(config["display"]["width"]/2)-200, config["display"]["height"]-20])
+        gameDisplay.blit(answer_text, [int((config["display"]["width"]/2)-200), int(config["display"]["height"]-20)])
         #Score Update
         score = str(position[0] + (position[1]*10) + 1)
         score_text = font.render("Score: " + score, True, (0,0,0), (255,255,255))
         gameDisplay.blit(score_text, [0,0])
+        #Time
+        time_elapsed = str(round((datetime.datetime.now() - start_time).total_seconds()))
+        time_text = font.render("Seconds Elapsed: " + time_elapsed, True, (0,0,0), (255,255,255))
+        gameDisplay.blit(time_text, [0, config["display"]["height"]-20])
         #Snake
         gameDisplay.blit(snake, offset)
         pygame.display.update()
