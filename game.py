@@ -238,6 +238,8 @@ def keystroke_recorder(event):
             return "k"
         elif event.key == pygame.K_l:
             return "l"
+        elif event.key == pygame.K_QUOTE:
+            return "'"
         elif event.key == pygame.K_z:
             return "z"
         elif event.key == pygame.K_x:
