@@ -20,6 +20,10 @@ startbtn = pygame.image.load("./assets/startbtn.png")
 grid = pygame.image.load("./assets/grid.png")
 snake = pygame.image.load("./assets/snake.png")
 banner = pygame.image.load("./assets/announcement.png")
+checkmark = pygame.image.load("./assets/check.png")
+xmark = pygame.image.load("./assets/xmark.png")
+continuebtn = pygame.image.load("./assets/continue.png")
+quitbtn = pygame.image.load("./assets/quit.png")
 
 dice = [pygame.image.load("./assets/dice/1.png"), pygame.image.load("./assets/dice/2.png"), pygame.image.load("./assets/dice/3.png"), pygame.image.load("./assets/dice/4.png"), pygame.image.load("./assets/dice/5.png"), pygame.image.load("./assets/dice/6.png")]
 
@@ -51,9 +55,25 @@ def offset_to_pos(offset):
     pos_x = x/60
     pos_y = y/60
     return [int(pos_x), int(pos_y)]
+
+def correct_checker(id, ug_answer):
+    id = str(id)
+    answer = config["answers"][id]
+    if type(answer) == list:
+        for each_answer in answer:
+            if each_answer.lower() == str(ug_answer).lower():
+                return True
+        return False
+    elif type(answer) == str:
+        if ug_answer.lower() == answer.lower():
+            return True
+        else:
+            return False
+
 #Main Modules
 
 def start():
+    gameDisplay.fill([42, 42, 42])
     loop = True
     while(loop == True):
         for event in pygame.event.get():
@@ -70,24 +90,15 @@ def start():
         clock.tick(config["display"]["fps"])
         pygame.display.flip()
 
-async def wait(seconds):
-    time.sleep(seconds)
-
-def correct(id, ug_answer):
-    id = str(id)
-    question = config["question"][id]
-    answer = config["answer"][id]
-    if answer.type == list:
-        for each_answer in answer:
-            if each_answer == str(ug_answer):
-                return True
-
 def mainscreen():
+    id_randomized = []
+    for x in config["questions"].keys():
+        id_randomized.append(x)
+    random.shuffle(id_randomized)
+    print("Question Order: {}".format(id_randomized))
 
     #Private Variables
-
     start_time = datetime.datetime.now()
-    #Load Variables
     answer = "" 
     provided_answer = ""
     offset = [config["snake-xoffset"], 0]
@@ -96,6 +107,9 @@ def mainscreen():
     diceface = dice[0]
     displaycube = False
     bannerdisplay = False
+    answer_text = ""
+    stoprolling = True
+    collectbannerbuttons = False
     while(loop == True):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -108,23 +122,20 @@ def mainscreen():
                     provided_answer = answer
                     answer = ""
                     bannerdisplay = True
-                #Arrow Keystrokes
-                elif event.key == pygame.K_RIGHT:
-                    displaycube = True
-                    randomnumber = random.randint(1,6)
-                    diceface = dice[randomnumber-1]
-                    print("Random Number: " + str(randomnumber))
-                    for x in range(randomnumber):
-                        offset = move(offset)
-                        position = offset_to_pos(offset)
+                    stoprolling = False
                 else:
                     letter = str(keystroke_recorder(event))
-                    answer = answer + str(keystroke_recorder(event)) #Adding Letters
+                    answer = answer + letter #Adding Letters
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if collectbannerbuttons == True:
+                    if event.pos[0] >= int(config["display"]["width"]/2-180) and event.pos[0] <= int((config["display"]["width"]/2-180)+100) and event.pos[1] >= int(config["display"]["height"]/2+40) and event.pos[1] <= int((config["display"]["height"]/2+40)+30):
+                        loop = False
+                    if event.pos[0] >= int(config["display"]["width"]/2-50) and event.pos[0] <= int(int(config["display"]["width"]/2-50)+200) and event.pos[1] >= int(config["display"]["height"]/2+10) and event.pos[1] <= int(int(config["display"]["height"]/2+40)+30):
+                        bannerdisplay = False
+                        id_randomized.pop(0)
         #Display
+        gameDisplay.fill([255, 255, 255])
         gameDisplay.blit(grid, [0,0]) #Set Background
-        #Answer Text Update
-        answer_text = font.render("Your Answer: " + answer, True, (0,0,0), (255, 255, 255)) #Answer
-        gameDisplay.blit(answer_text, [int((config["display"]["width"]/2)-200), int(config["display"]["height"]-20)])
         #Score Update
         score = str(position[0] + (position[1]*10) + 1)
         score_text = font.render("Score: " + score, True, (0,0,0), (255,255,255))
@@ -135,16 +146,55 @@ def mainscreen():
         gameDisplay.blit(time_text, [0, config["display"]["height"]-20])
         #Snake
         gameDisplay.blit(snake, offset)
-        #Dice
-        if displaycube == True:
-            gameDisplay.blit(diceface, [0, 60])
+        #Question
+        try:
+            question = config["questions"][id_randomized[0]]
+        except Exception:
+            print("Out of questions.")
+            loop = False
+        question_text = font.render("Question: " + question, True, (0,0,0), (255,255,255))
+        gameDisplay.blit(question_text, [0, config["display"]["height"]-40])
+        #Answer Text Update
+        answer_text = font.render("Your Answer: " + str(answer), True, (0,0,0), (255,255,255)) #Answer
+        gameDisplay.blit(answer_text, [int((config["display"]["width"]/2)-200), int(config["display"]["height"]-20)])
         #Announcments
         if bannerdisplay == True:
             provided_answer_text = font.render("Your Answer: " + provided_answer, True, (0,0,0))
             gameDisplay.blit(banner, centercoord(341, 604))
             gameDisplay.blit(provided_answer_text, [int(config["display"]["width"]/2-180), int(config["display"]["height"]/2-75)])
-        pygame.display.update()
+            if correct_checker(id_randomized[0], provided_answer) == True:
+                gameDisplay.blit(checkmark, [int(config["display"]["width"]/2), int(config["display"]["height"]/2-70)])
+                #If Correct Move the Snake
+                displaycube = True
+                if stoprolling == False:
+                    randomnumber = random.randint(1,6)
+                    diceface = dice[randomnumber-1]
+                    print("Random Number: " + str(randomnumber))
+                    for x in range(randomnumber):
+                        offset = move(offset)
+                        position = offset_to_pos(offset)
+                    stoprolling = True
+                rolled_text = font.render("You rolled a " + str(randomnumber), True, (0,0,0)) #Rolled Text
+                gameDisplay.blit(rolled_text, [int(config["display"]["width"]/2-180), int(config["display"]["height"]/2-30)])
+                #Render Buttons
+                collectbannerbuttons = True
+                gameDisplay.blit(quitbtn, [int(config["display"]["width"]/2-180), int(config["display"]["height"]/2+40)])
+                gameDisplay.blit(continuebtn, [int(config["display"]["width"]/2-80), int(config["display"]["height"]/2+40)])
+            elif correct_checker(id_randomized[0], provided_answer) == False:
+                gameDisplay.blit(xmark, [int(config["display"]["width"]/2-180), int(config["display"]["height"]/2-50)])
+                displaycube = False
+                #Render Buttons
+                collectbannerbuttons = True
+                gameDisplay.blit(quitbtn, [int(config["display"]["width"]/2-180), int(config["display"]["height"]/2+40)])
+                gameDisplay.blit(continuebtn, [int(config["display"]["width"]/2-50), int(config["display"]["height"]/2+40)])
+        else:
+            collectbannerbuttons = False
+        if displaycube == True:
+            previous_roll_text = font.render("Previous Roll:", True, (0,0,0))
+            gameDisplay.blit(previous_roll_text, [0, 40])
+            gameDisplay.blit(diceface, [0, 60])
         clock.tick(config["display"]["fps"])
+        pygame.display.update()
         pygame.display.flip()
 
 def keystroke_recorder(event):

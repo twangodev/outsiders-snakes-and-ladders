@@ -1,7 +1,7 @@
 {
     "snake-xoffset": 110,
     "display": {
-        "height": 600,
+        "height": 640,
         "width": 800,
         "caption": "Outsiders Extra Credit: Snakes and Ladders",
         "fps": 60
