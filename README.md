@@ -3,8 +3,9 @@ English Extra Credit Project
 
 # Installing the Dependencies:
 ## Installing Python
-For Mac OS X Users: (Download Python Here)[https://www.python.org/downloads/mac-osx/]
-For Windows Users: (Download Python Here)[https://www.python.org/downloads/windows/]
+For Mac OS X Users: [Download Python Here (MAC)](https://www.python.org/downloads/mac-osx/)
+For Windows Users: [Download Python Here (WINDOWS)](https://www.python.org/downloads/windows/)
+For Linux Users: [Refer Here](https://docs.python-guide.org/starting/install3/linux/)
 
 **ENSURE THAT YOU HAVE ADDED PYTHON TO SYSTEM PATH**
 
