@@ -9,8 +9,10 @@ For Linux Users: [Refer Here](https://docs.python-guide.org/starting/install3/li
 
 **ENSURE THAT YOU HAVE ADDED PYTHON TO SYSTEM PATH**
 
+## Installing Pygame using pip
 After installing Python, open your terminal and run:
 `pip install pygame`
 If you get an error while running the command, you probably don't have Python added to path.
 
-After installing Python and Pygame, you can now run the python file by double clicking `game.py`
+# Final Product
+After installing Python and Pygame, you can now run the python file `game.py`
