@@ -73,6 +73,15 @@ def start():
 async def wait(seconds):
     time.sleep(seconds)
 
+def correct(id, ug_answer):
+    id = str(id)
+    question = config["question"][id]
+    answer = config["answer"][id]
+    if answer.type == list:
+        for each_answer in answer:
+            if each_answer == str(ug_answer):
+                return True
+
 def mainscreen():
 
     #Private Variables
