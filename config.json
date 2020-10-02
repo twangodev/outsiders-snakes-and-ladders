@@ -18,7 +18,8 @@
         "09": "What book does Johnny bring back when Ponyboy and him are at the church?",
         "10": "Where did Ponyboy eat before the church started to burn?",
         "11": "When going through the burning church, what article of clothing saved Ponyboy's life?",
-        "12": "Who is stuck inside the burning chruch?"
+        "12": "Who is stuck inside the burning chruch?",
+        "13": ""
     },
     "answers": {
         "01": ["Soda", "Sodapop", "Darry"],
@@ -32,6 +33,7 @@
         "09": "Gone with the Wind",
         "10": ["DQ","Dairy Queen"],
         "11": ["Dallas' Jacket", "Dallas's Jacket", "Dally's Jacket", "Jacket", "Coat"],
-        "12": ["Children", "Kids", "Schoolchildren"]
+        "12": ["Children", "Kids", "Schoolchildren"],
+        "13":
     }
 }
