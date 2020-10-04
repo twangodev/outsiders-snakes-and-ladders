@@ -14,4 +14,4 @@ After installing Python, open your terminal and run: `pip install pygame`\
 If you get an error while running the command, you probably don't have Python added to path.
 
 # Final Product
-After installing Python and Pygame, you can now run the python file `game.py`
+After installing Python and Pygame, you can now run the python file `game.py` (13.2 KB) or `minify.py` (5.71 KB)
