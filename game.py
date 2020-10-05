@@ -312,6 +312,13 @@ def mainscreen():
                     
             elif correct_checker(id_randomized[0], provided_answer) == False:
                 gameDisplay.blit(xmark, [int(config["display"]["width"]/2-180), int(config["display"]["height"]/2-50)])
+                correct_answer = config["answers"][id_randomized[0]]
+                if type(correct_answer) == list:
+                    correct_answer_str = "One of the correct answers were: " + correct_answer[0]
+                else:
+                    correct_answer_str = "The correct answer was: " + str(correct_answer)
+                correct_text = font.render(correct_answer_str, True, (0,0,0))
+                gameDisplay.blit(correct_text, [int(config["display"]["width"]/2-180), int(config["display"]["height"]/2-20)])
                 displaycube = False
                 #Render Buttons
                 collectbannerbuttons = True
