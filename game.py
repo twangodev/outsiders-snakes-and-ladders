@@ -148,6 +148,10 @@ def keystroke_recorder(event):
             return "9"
         elif event.key == pygame.K_0:
             return "0"
+        elif event.key == pygame.K_KP_MINUS:
+            return "-"
+        elif event.key == pygame.K_MINUS:
+            return "-"
         #Space
         elif event.key == pygame.K_SPACE:
             return " "

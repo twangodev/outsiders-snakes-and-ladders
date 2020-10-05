@@ -88,6 +88,8 @@ def u(event):
 		elif B.key==A.K_9:return'9'
 		elif B.key==A.K_0:return'0'
 		elif B.key==A.K_SPACE:return' '
+		elif B.key==A.K_MINUS:return'-'
+		elif B.key==A.K_KP_MINUS:return'-'
 		else:return T
 def v(position,offset):
 	F=position;D=K.render('You discovered and took a snake!',E,(0,0,0))

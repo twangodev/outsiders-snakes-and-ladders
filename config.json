@@ -19,7 +19,15 @@
         "10": "Where did Ponyboy eat before the church started to burn?",
         "11": "When going through the burning church, what article of clothing saved Ponyboy's life?",
         "12": "Who is stuck inside the burning chruch?",
-        "13": ""
+        "13": "Who were the people hospitalized after the fire?",
+        "14": "Who is Sodapop's girlfriend?",
+        "15": "When Johnny was in the hospital, who came to visit?",
+        "16": "What does Two-bit give Dally when he visits him? (Hint: His prizzed possession)",
+        "17": "Before the rumble, what does Ponyboy consume due to his headache?",
+        "18": "Who stops Ponyboy and Dally when they drive to the hospital after the rumble",
+        "19": "",
+        "20": "",
+        "21": ""
     },
     "answers": {
         "01": ["Soda", "Sodapop", "Darry"],
@@ -34,6 +42,14 @@
         "10": ["DQ","Dairy Queen"],
         "11": ["Dallas' Jacket", "Dallas's Jacket", "Dally's Jacket", "Jacket", "Coat"],
         "12": ["Children", "Kids", "Schoolchildren", "kid", "child"],
-        "13": ""
+        "13": ["Ponyboy", "Dally", "Dallas", "Johnny"],
+        "14": "Sandy",
+        "15": ["Mom", "Mother", "Johnny's mother", "Johnny's mom", "His Mother", "His Mom", "Two-Bit", "Ponyboy"],
+        "16": ["Switchblade", "Blade", "Knife", "Black-handled Switchblade"],
+        "17": ["asprin", "5 asprins", "asprins", "five asprins"],
+        "18": ["Cops", "Cop", "Police", "Policemen", "Policeman"],
+        "19": "",
+        "20": "",
+        "21": ""
     }
 }
