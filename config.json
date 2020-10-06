@@ -25,9 +25,18 @@
         "16": "What does Two-bit give Dally when he visits him? (Hint: His prizzed possession)",
         "17": "Before the rumble, what does Ponyboy consume due to his headache?",
         "18": "Who stops Ponyboy and Dally when they drive to the hospital after the rumble",
-        "19": "",
-        "20": "",
-        "21": ""
+        "19": "After the rumble is over, who gets shot by the police?",
+        "20": "Who did Ponyboy ask for when he had his concussion?",
+        "21": "Who does Ponyboy find in Soda's high school yearbook?",
+        "22": "Which Soc visits Ponyboy after his concussion?",
+        "23": "As Ponyboy and Darry fight, who runs away?",
+        "24": "When Ponyboy looks inside Gone with the Wind in Chapter 12, who has written a note in it?",
+        "25": "",
+        "26": "",
+        "27": "",
+        "28": "",
+        "29": "",
+        "30": ""
     },
     "answers": {
         "01": ["Soda", "Sodapop", "Darry"],
@@ -48,8 +57,17 @@
         "16": ["Switchblade", "Blade", "Knife", "Black-handled Switchblade"],
         "17": ["asprin", "5 asprins", "asprins", "five asprins"],
         "18": ["Cops", "Cop", "Police", "Policemen", "Policeman"],
-        "19": "",
-        "20": "",
-        "21": ""
+        "19": ["Dallas", "Dally"],
+        "20": ["Darry", "Soda", "Sodapop", "Johnny", "Ponyboy's parents", "His Parents", "Parents", "Ponyboy's mom", "His Mother", "His Mom", "Ponyboy's Dad", "His Father", "His Dad"],
+        "21": ["Bob, Bobbi"],
+        "22": "Randy",
+        "23": ["Soda","Sodapop"],
+        "24": "Johnny",
+        "25": "",
+        "26": "",
+        "27": "",
+        "28": "",
+        "29": "",
+        "30": ""
     }
 }
