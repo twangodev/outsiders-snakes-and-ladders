@@ -31,12 +31,7 @@
         "22": "Which Soc visits Ponyboy after his concussion?",
         "23": "As Ponyboy and Darry fight, who runs away?",
         "24": "When Ponyboy looks inside Gone with the Wind in Chapter 12, who has written a note in it?",
-        "25": "",
-        "26": "",
-        "27": "",
-        "28": "",
-        "29": "",
-        "30": ""
+        "25": "Who does Ponyboy like?"
     },
     "answers": {
         "01": ["Soda", "Sodapop", "Darry"],
@@ -63,11 +58,6 @@
         "22": "Randy",
         "23": ["Soda","Sodapop"],
         "24": "Johnny",
-        "25": "",
-        "26": "",
-        "27": "",
-        "28": "",
-        "29": "",
-        "30": ""
+        "25": ["Cherry Valance", "Cherry"]
     }
 }
