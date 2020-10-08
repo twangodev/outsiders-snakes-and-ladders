@@ -15,3 +15,8 @@ If you get an error while running the command, you probably don't have Python ad
 
 # Final Product
 After installing Python and Pygame, you can now run the python file `game.py` (13.2 KB) or `minify.py` (5.71 KB)
+
+# Instructions/Rules for Game
+1. Answer the questions and the dice will be automatically rolled
+2. Snakes and ladders will help you go up or down
+3. The player that takes the least amount of time to reach 100 wins
