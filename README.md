@@ -1,5 +1,7 @@
 # outsiders-snakes-and-ladders
 English Extra Credit Project
+## Archived Repo
+Please note that this repository is archived and code will not be maintained
 
 # Installing the Dependencies:
 ## Installing Python
